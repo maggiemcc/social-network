@@ -72,4 +72,4 @@ const getPostReactions= (int) => {
     return results;
 };
 
-module.exports = { getRandomUser, getRandomPost, getPostReactions };
+module.exports = { getRandomName, getRandomPost, getRandomUser, getPostReactions };
