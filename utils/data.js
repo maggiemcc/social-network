@@ -66,7 +66,7 @@ const getPostReactions= (int) => {
     for (let i = 0; i < int; i++) {
         results.push({
             username: getRandomName(),
-            reaction: getRandomReaction(),
+            reactionBody: getRandomReaction(),
         });
     }
     return results;
