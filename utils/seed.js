@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
-const { User, Post } = require('../models');
-const { getRandomName, getRandomPost } = require('./data');
+const { User, Thought } = require('../models');
+const { getRandomUsername, getRandomEmail, getRandomThought, getRandomReaction } = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -12,34 +12,39 @@ connection.once('open', async () => {
         await connection.dropCollection('users');
     }
 
-    let postCheck = await connection.db.listCollections({ name: 'posts' }).toArray();
-    if (postCheck.length) {
-        await connection.dropCollection('posts');
+    let thoughtCheck = await connection.db.listCollections({ name: 'thoughts' }).toArray();
+    if (thoughtCheck.length) {
+        await connection.dropCollection('thoughts');
     }
 
     const users = [];
-    const posts = getRandomPost(3);
+    const thoughts = [];
 
-    // Loop 5 times -- add users to the users array
-    for (let i = 0; i < 5; i++) {
-        // Get some random assignment objects using a helper function that we imported from ./data
-        const fullName = getRandomName();
-        const first = fullName.split(' ')[0];
-        const last = fullName.split(' ')[1];
+    // Loop 3 times -- add users to the users array
+    for (let i = 0; i < 4; i++) {
+        const user = {
+            username: getRandomUsername(),
+            email: getRandomEmail(),
+        };
 
-        users.push({
-            first,
-            last,
-        });
+        users.push(user);
     };
 
-    // Add to the collections and await the results
-    await User.updateMany(users);
-    await Post.insertMany(posts)
+    for (let i = 0; i < 3; i++) {
+        const thought = {
+            thoughtText: getRandomThought(),
+            username: getRandomUsername(),
+        };
 
-    // Log out the seed data to indicate what should appear in the database
+        thoughts.push(thought);
+    };
+
+
+    await User.collection.insertMany(users);
+    await Thought.collection.insertMany(thoughts);
+
     console.table(users);
-    console.table(posts);
+    console.table(thoughts);
     console.info('Seeding complete!');
     process.exit(0);
 });

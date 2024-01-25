@@ -1,5 +1,8 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
+const formatData = (timestamp) => {
+  return timestamp.toLocalString();
+};
 
 const thoughtSchema = new Schema(
   {
@@ -12,7 +15,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (timestamp) => formatDate(timestamp),
+      get: formatData,
     },
     username: {
         type: String,
@@ -27,10 +30,6 @@ const thoughtSchema = new Schema(
     id: false,
   }
 );
-
-const formatDate = (timestamp => {
-    return new Date(timestamp).toLocaleDateString();
-})
 
 const Thought = model('thought', thoughtSchema);
 
