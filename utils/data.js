@@ -60,38 +60,4 @@ const getRandomEmail = () => `${getRandomArrItem(emails)}}`;
 const getRandomThought = () => `${getRandomArrItem(thoughts)}}`;
 const getRandomReaction = () => `${getRandomArrItem(reactions)}}`;
 
-// // const getRandomUser = (int) => {
-// //     const results = [];
-// //     for (let i = 0; i < int; i++) {
-// //         results.push({
-// //             username: getRandomName(),
-// //             email: getRandomEmail(),
-// //             thoughts: getRandomThought(),
-// //         });
-// //     }
-// //     return results;
-// // };
-
-// const getRandomThought= (int) => {
-//     const results = [];
-//     for (let i = 0; i < int; i++) {
-//         results.push({
-//             thoughtText: getRandomArrItem(thoughts),
-//             reactions: [...getReactions(2)],
-//         });
-//     }
-//     return results;
-// };
-
-// const getPostReactions= (int) => {
-//     const results = [];
-//     for (let i = 0; i < int; i++) {
-//         results.push({
-//             username: getRandomName(),
-//             reactionBody: getRandomReaction(),
-//         });
-//     }
-//     return results;
-// };
-
 module.exports = { getRandomUsername, getRandomEmail, getRandomThought, getRandomReaction};
