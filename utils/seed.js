@@ -20,8 +20,8 @@ connection.once('open', async () => {
     const users = [];
     const thoughts = [];
 
-    // Loop 3 times -- add users to the users array
-    for (let i = 0; i < 4; i++) {
+    // Loop 5 times -- add users to the users array
+    for (let i = 0; i < 5; i++) {
         const user = {
             username: getRandomUsername(),
             email: getRandomEmail(),
@@ -30,7 +30,7 @@ connection.once('open', async () => {
         users.push(user);
     };
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
         const thought = {
             thoughtText: getRandomThought(),
             username: getRandomUsername(),
