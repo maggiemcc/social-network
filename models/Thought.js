@@ -1,9 +1,9 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 
-function formatDate(time) {
-  return new Date(time).toLocaleString();
-}
+// function formatDate(time) {
+//   return new Date(time).toLocaleString();
+// }
 
 const thoughtSchema = new Schema(
   {
