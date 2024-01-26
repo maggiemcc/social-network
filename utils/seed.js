@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
 const { User, Thought } = require('../models');
-const { getRandomUsername, getRandomEmail, getRandomThought, getRandomReaction } = require('./data');
+const { getRandomUsername, getRandomEmail, getRandomThought, getRandomReaction, getRandomFriend } = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -20,31 +20,37 @@ connection.once('open', async () => {
     const users = [];
     const thoughts = [];
 
+    const today = Date.now();
+    function formatDate(today) {return new Date(today).toLocaleString();};
+
     // Loop 5 times -- add users to the users array
-    for (let i = 0; i < 5; i++) {
-        const user = {
+    for (let i = 0; i < 3; i++) {
+        const newUser = {
             username: getRandomUsername(),
             email: getRandomEmail(),
+            friends: {name: getRandomFriend()},
+            thoughts: {thoughtText: getRandomThought()},
         };
-
-        users.push(user);
+        users.push(newUser);
     };
+    
 
+    // Loop 5 times -- add thoughts to the thoughts array
     for (let i = 0; i < 5; i++) {
-        const thought = {
+        const newThought = {
             thoughtText: getRandomThought(),
             username: getRandomUsername(),
+            reactions: {reactionBody: getRandomReaction()},
+            CreatedAt: formatDate(today),
         };
-
-        thoughts.push(thought);
+        thoughts.push(newThought);
     };
-
 
     await User.collection.insertMany(users);
     await Thought.collection.insertMany(thoughts);
 
-    console.table(users);
     console.table(thoughts);
+    console.table(users);
     console.info('Seeding complete!');
     process.exit(0);
 });

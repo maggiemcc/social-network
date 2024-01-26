@@ -1,4 +1,4 @@
-const fNames = [
+const first = [
     "Maggie",
     "Calvin",
     "Linda",
@@ -9,7 +9,7 @@ const fNames = [
     "Ryan",
     "Trent",
 ];
-const lNames = [
+const last = [
     "McCausland",
     "Smith",
     "Jones",
@@ -55,9 +55,10 @@ const reactions = [
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 // Get random name
-const getRandomUsername = () => `${getRandomArrItem(fNames)} ${getRandomArrItem(lNames)}`;
-const getRandomEmail = () => `${getRandomArrItem(emails)}}`;
-const getRandomThought = () => `${getRandomArrItem(thoughts)}}`;
-const getRandomReaction = () => `${getRandomArrItem(reactions)}}`;
+const getRandomUsername = () => `${getRandomArrItem(first)}${getRandomArrItem(last)}`;
+const getRandomFriend = () => `${getRandomArrItem(first)} ${getRandomArrItem(last)}`;
+const getRandomEmail = () => `${getRandomArrItem(emails)}`;
+const getRandomThought = () => `${getRandomArrItem(thoughts)}`;
+const getRandomReaction = () => `${getRandomArrItem(reactions)}`;
 
-module.exports = { getRandomUsername, getRandomEmail, getRandomThought, getRandomReaction};
+module.exports = { getRandomUsername, getRandomEmail, getRandomThought, getRandomReaction, getRandomFriend};

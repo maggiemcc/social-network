@@ -1,8 +1,9 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
-const formatData = (timestamp) => {
-  return timestamp.toLocalString();
-};
+
+function formatDate(time) {
+  return new Date(time).toLocaleString();
+}
 
 const thoughtSchema = new Schema(
   {
@@ -10,23 +11,22 @@ const thoughtSchema = new Schema(
       type: String,
       required: true,
       maxLength: 300,
+      default: "Here's a thought..."
     },
     createdAt: {
       type: Date,
-      default: Date.now,
-      get: formatData,
+      default: Date.now(),
     },
     username: {
-        type: String,
-        required: true,
-      },
-      reactions: [reactionSchema],
+      type: String,
+      required: true,
+    },
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
       getters: true,
     },
-    id: false,
   }
 );
 
