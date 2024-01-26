@@ -28,8 +28,8 @@ connection.once('open', async () => {
         const newUser = {
             username: getRandomUsername(),
             email: getRandomEmail(),
-            friends: {name: getRandomFriend()},
-            thoughts: {thoughtText: getRandomThought()},
+            friends: [{friendName: getRandomFriend()}],
+            thoughts: [{thoughtText: getRandomThought()}],
         };
         users.push(newUser);
     };
@@ -40,7 +40,7 @@ connection.once('open', async () => {
         const newThought = {
             thoughtText: getRandomThought(),
             username: getRandomUsername(),
-            reactions: {reactionBody: getRandomReaction()},
+            reactions: [{reactionBody: getRandomReaction()}],
             CreatedAt: formatDate(today),
         };
         thoughts.push(newThought);

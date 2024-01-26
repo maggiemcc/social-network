@@ -9,11 +9,11 @@ const friendSchema = new Schema(
         friendName: {
             type: String,
             required: true,
+            default: 'Friend Unknown'
         },
     },
     {
         toJSON: {
-            // virtuals: true,
             getters: true,
         },
         id: false,

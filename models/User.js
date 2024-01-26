@@ -1,4 +1,4 @@
-const { Schema, model, Type } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const friendSchema = require('./Friend');
 
 const userSchema = new Schema(
@@ -20,13 +20,11 @@ const userSchema = new Schema(
   },
   {
     toJSON: {
-      virtuals: true,
+      getters: true,
     },
     id: false,
   }
 );
-
-// userSchema.virtual('friendlist').get(function () {return this.friends.length;});
 
 const User = model('user', userSchema);
 module.exports = User;
