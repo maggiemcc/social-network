@@ -13,7 +13,8 @@ const reactionSchema = new Schema(
         reactionBody: {
             type: String,
             required: true,
-            maxLength: 200,
+            minLength: 1,
+            maxLength: 280,
             default: "I suppose...",
         },
         username: {
@@ -23,6 +24,7 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now(),
+            get: formatDate,
         },
     },
     {
