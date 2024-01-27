@@ -31,7 +31,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 ## Video
 
 Click the image below to watch a walkthrough tutorial:  
-[![Watch my How to Video](screenshot.png)](https://watch.screencastify.com/v/f1VoAjvyPbHpPviLj4Io)
+[![Watch my How to Video](screenshot.png)](https://drive.google.com/file/d/1YqC61wej0NudGkst_kLESnUl00F65gVD/view)
 
 ## Contributors
 

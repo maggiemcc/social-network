@@ -20,28 +20,19 @@ connection.once('open', async () => {
   const users = [];
   const thoughts = [];
 
-  for (let i = 0; i < 10; i++) {
-    // const username = getRandomUsername();
-    // const reactions = getRandomReaction(3);
-    
+  for (let i = 0; i < 10; i++) {    
     const newThought = {
         username: getRandomUsername(),
         thoughtText: getRandomThought(),
-        reactions: getRandomReaction(3),
+        reactions: getRandomReaction(1),
       };
       thoughts.push(newThought);
-
-    // thoughts.push({
-    //   thoughtText: getRandomThought(),
-    //   username,
-    //   reactions,
-    // });
   }
 
   for (let i = 0; i < 20; i++) {
     const username = getRandomUsername();
     const email = getRandomEmail();
-    const friends = getRandomFriend(3);
+    const friends = getRandomFriend(1);
 
     users.push({
       username,

@@ -64,17 +64,7 @@ module.exports = {
             if (!thought) {
                 return res.status(404).json({ message: 'No such thought exists' });
             }
-            // const user = await User.findOneAndUpdate(
-            //     { thoughts: req.params.thoughtId },
-            //     { $pull: { thoughts: req.params.thoughtId } },
-            //     { new: true }
-            // );
 
-            // if (!user) {
-            //     return res
-            //         .status(404)
-            //         .json({ message: 'No user found with that ID :(' });
-            // }
             res.json({ message: 'Thought successfully deleted' });
         } catch (err) {
             console.log(err);
@@ -108,8 +98,8 @@ module.exports = {
         try {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $pull: { reactions: { reactionId: req.params.reactionId }} },
-                { new: true }
+                { $pull: {reactions: {_id: req.params._id}}},
+                { runValidators: true, new: true }
             );
 
             if (!thought) {
