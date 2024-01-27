@@ -21,7 +21,7 @@ const thoughtSchema = new Schema(
     },
     username: {
       type: String,
-      required: true,
+      required: false,
     },
     reactions: [reactionSchema],
   },
@@ -30,6 +30,7 @@ const thoughtSchema = new Schema(
       getters: true,
       virtuals: true,
     },
+    id: false,
   }
 );
 

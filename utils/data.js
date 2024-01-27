@@ -17,17 +17,23 @@ const last = [
     "Anderson",
 ];
 
+const emailNames = [
+    "coding4fun",
+    "nosql",
+    "bootcamp",
+    "randomusername",
+    "randomusername",
+    "mycontact",
+    "luvweekends",
+    "luv2eat",
+    "luv2sleep",
+    "dreambig",
+];
+
 const emails = [
-    "coding4fun@hotmail.com",
-    "nosql@gmail.com",
-    "bootcamp@gmail.com",
-    "randomusername@gmail.com",
-    "randomusername@gmail.com",
-    "mycontact@gmail.com",
-    "luvweekends@hotmail.com",
-    "luv2eat@gmail.com",
-    "luv2sleep@hotmail.com",
-    "dreambig@hotmail.com",
+    "@hotmail.com",
+    "@gmail.com",
+    "@yahoo.com",
 ];
 
 const thoughts = [
@@ -55,10 +61,41 @@ const reactions = [
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 // Get random name
-const getRandomUsername = () => `${getRandomArrItem(first)}${getRandomArrItem(last)}`;
-const getRandomFriend = () => `${getRandomArrItem(first)} ${getRandomArrItem(last)}`;
-const getRandomEmail = () => `${getRandomArrItem(emails)}`;
-const getRandomThought = () => `${getRandomArrItem(thoughts)}`;
-const getRandomReaction = () => `${getRandomArrItem(reactions)}`;
+const getRandomUsername = () => `${getRandomArrItem(first)}${getRandomArrItem(last)}${Math.floor(Math.random() * (20 - 3 + 7) + 22)}`;
+const getRandomEmail = () => `${getRandomArrItem(emailNames)}${Math.floor(Math.random() * (20 - 3 + 7) + 22)}${getRandomArrItem(emails)}`;
+// const getRandomFriend = () => `${getRandomArrItem(first)} ${getRandomArrItem(last)}`;
+// const getRandomThought = () => `${getRandomArrItem(thoughts)}`;
+// const getRandomReaction = () => `${getRandomArrItem(reactions)}`;
+
+const getRandomFriend = (int) => {
+    const results = [];
+    for (let i = 0; i < int; i++) {
+      results.push({
+        friendName: `${getRandomArrItem(first)} ${getRandomArrItem(last)}`,
+      });
+    }
+    return results;
+  };
+
+  const getRandomReaction = (int) => {
+    const results = [];
+    for (let i = 0; i < int; i++) {
+      results.push({
+        reactionBody: getRandomArrItem(reactions),
+      });
+    }
+    return results;
+  };
+
+  const getRandomThought = (int) => {
+    const results = [];
+    for (let i = 0; i < int; i++) {
+      results.push({
+        thoughtText: getRandomArrItem(thoughts),
+        reactions: getRandomArrItem(reactions),
+      });
+    }
+    return results;
+  };
 
 module.exports = { getRandomUsername, getRandomEmail, getRandomThought, getRandomReaction, getRandomFriend};
